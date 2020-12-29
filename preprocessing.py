@@ -11,8 +11,12 @@ std_scale=pre.standardscaler().fit(x)
 x_scaled=std_scale.transform(x)
 #é------------------spliting
 x_train,x_test,y_train,y_test=spl(x_scaled ,y,test_size=0.33)
-last=input("epreprocessing  finiched , do you want to show x training data ?   ")
-if last==yes or last==YES or last==y or last==Y :
-    x_train.head()
+file_x_train=open("x_train.txt","w")
+#save result as pickle file 
+import pickle
+with open('train.pickle','wb') as f :
+    pickle.dump([x_train,y_train],f)
+with open('test.pickle','wb') as ts:
+    pickle.dump([x_test,y_test],ts)
 
 
